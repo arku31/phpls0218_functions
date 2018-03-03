@@ -5,5 +5,6 @@ $prepare = $pdo->prepare('SELECT * FROM users where id > :uslovie1 AND id < :usl
 $id = 1;
 $prepare->execute(['uslovie1' => $id, 'uslovie2' => 15]);
 $data = $prepare->fetchAll(PDO::FETCH_OBJ);
+echo '<pre>';
 print_r($data);
 die();

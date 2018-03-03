@@ -11,7 +11,7 @@ function writeCsv()
     // Если файл не существует - пробует его создать.
     //http://php.net/manual/ru/function.fopen.php
     foreach ($data as $fields) {
-        fputcsv($fp, $fields);
+        fputcsv($fp, $fields, ';');
     }
     fclose($fp);
     echo 'Файл успешно записан';
@@ -22,8 +22,8 @@ function readCsv()
     $csvPath = './test.csv';
     $csvFile = fopen($csvPath, "r"); //r = чтение с начала
     if ($csvFile) {
-        $res = array();
-        while (($csvData = fgetcsv($csvFile, 100, ",")) !== false) {
+        $res = [];
+        while (($csvData = fgetcsv($csvFile, 100, ";")) !== false) {
             $res[] = $csvData;
         }
         echo '<pre>';
@@ -31,5 +31,5 @@ function readCsv()
     }
 }
 
-writeCsv();
+//writeCsv();
 readCsv();

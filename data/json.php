@@ -7,7 +7,7 @@ function writeJson($show = false)
         ["США", "Испания", "Австралия", "Россия"],
         ["Россия", "США", "Испания", "Австралия"],
     ];
-    $encoded = json_encode($data);
+    $encoded = json_encode($data, JSON_UNESCAPED_UNICODE);
     if ($show) {
         echo $encoded;
     }
@@ -18,9 +18,10 @@ function readJson()
 {
     $data = file_get_contents('countries.json');
     echo $data;
-    $decoded = json_decode($data);
+    echo "<br><br>";
+    $decoded = json_decode($data, true);
     print_r($decoded);
 }
 
-writeJson();
+//writeJson(true);
 readJson();
